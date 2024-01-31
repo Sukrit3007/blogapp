@@ -1,10 +1,11 @@
+import AddBlog from '@/components/AddBlog'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      
-    </div>
+    <main className="flex flex-col items-center justify-between p-24"> 
+        <AddBlog/>
+    </main>
   )
 }
 
