@@ -7,6 +7,7 @@ import { Button } from './ui/button'
 import axios from 'axios'
 
 
+
 const AddBlog = () => {
     const [formData, setFormData] = useState({
         title:'',
@@ -36,6 +37,7 @@ const handleSubmit = async (e)=>{
         console.error(error)
     }
 }
+
 
 
   return (
