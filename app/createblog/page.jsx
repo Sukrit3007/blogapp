@@ -1,16 +1,15 @@
 'use client'
 import {useState} from 'react'
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { useToast } from "@/components/ui/use-toast"
+import { UseToast } from '@/components/ui/use-toast'
 
 import axios from 'axios'
 
 
 const page = () => {
-  const { toast } = useToast()
+  const { toast } = UseToast()
 
   const [formData, setFormData] = useState({
         title:'',
