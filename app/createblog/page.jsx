@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { useToast } from '@/components/ui/use-toast'
+// import { useToast } from '@/components/ui/use-toast'
 
 import axios from 'axios'
 
 
 const page = () => {
-  const { toast } = useToast()
+  // const { toast } = useToast()
 
   const [formData, setFormData] = useState({
         title:'',
@@ -41,11 +41,8 @@ const page = () => {
       <form onSubmit={handleSubmit} className='flex flex-col items-end min-w-full gap-6 '>
       
         <Button type="submit" className="max-w-fit"
-        onClick={() => {
-          toast({
-            description: "Your blog has been published.",
-          })
-        }} >Publish
+        // onClick={() => {toast({ description: "Your blog has been published.",})}} 
+        >Publish
         </Button>
 
           <Input  

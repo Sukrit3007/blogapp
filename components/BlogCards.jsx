@@ -6,11 +6,11 @@ import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card"
 import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { RxPencil2 } from "react-icons/rx";
-import { useToast } from '@/components/ui/use-toast'
+// import { useToast } from '@/components/ui/use-toast'
 
 
 const BlogCards = () => {
-    const { toast } = useToast()
+    // const { toast } = useToast()
     const [blogData, setBlogData] = useState([]);
 
     const fetchBlog = async ()=>{
@@ -66,9 +66,9 @@ const BlogCards = () => {
                     <DropdownMenuContent>
                       <DropdownMenuLabel>
                         <Button variant="destructive" className="min-w-full" 
-                          onClick={()=>{deleteBlog(item._id);toast({
-                            description: "Your blog has been Deleted.",
-                            }) }}>
+                          onClick={()=>{deleteBlog(item._id);
+                            // toast({description: "Your blog has been Deleted.",}) 
+                            }}>
                           <Link href='/saved'>Delete</Link>
                         </Button>
                       </DropdownMenuLabel>
