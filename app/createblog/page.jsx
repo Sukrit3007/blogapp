@@ -32,8 +32,10 @@ const CreateBlogPage = () => {
             title:'',
             content:'',
         })
+        
     } catch (error) {
         console.error(error)
+        
     }
 }
 
@@ -41,11 +43,10 @@ const CreateBlogPage = () => {
     <main className="flex flex-col items-center justify-between p-12 px-12 lg:px-40"> 
       <form onSubmit={handleSubmit} className='flex flex-col items-end min-w-full gap-6 '>
         <Toaster richColors closeButton position="bottom-center"/>
-        <Button type="submit" className="max-w-fit"
-        onClick={() => toast.success('Your blog has been published.')}
-        // onClick={() => {toast({ description: "Your blog has been published.",})}} 
-        >Publish
-        </Button>
+          <Button type="submit" className="max-w-fit"
+          onClick={() => toast.success('Your blog has been published.')}
+          >Publish
+          </Button>
 
           <Input  
           type='text'
