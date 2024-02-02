@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { UseToast } from '@/components/ui/use-toast'
+import { useToast } from '@/components/ui/use-toast'
 
 import axios from 'axios'
 
 
 const page = () => {
-  const { toast } = UseToast()
+  const { toast } = useToast()
 
   const [formData, setFormData] = useState({
         title:'',

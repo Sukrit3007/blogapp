@@ -6,11 +6,11 @@ import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card"
 import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { RxPencil2 } from "react-icons/rx";
-import { UseToast } from '@/components/ui/use-toast'
+import { useToast } from '@/components/ui/use-toast'
 
 
 const BlogCards = () => {
-    const { toast } = UseToast()
+    const { toast } = useToast()
     const [blogData, setBlogData] = useState([]);
 
     const fetchBlog = async ()=>{
