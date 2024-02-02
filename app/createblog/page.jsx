@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-// import { useToast } from '@/components/ui/use-toast'
+import { Toaster, toast } from 'sonner'
+
 
 import axios from 'axios'
 
@@ -39,8 +40,9 @@ const CreateBlogPage = () => {
   return (
     <main className="flex flex-col items-center justify-between p-12 px-12 lg:px-40"> 
       <form onSubmit={handleSubmit} className='flex flex-col items-end min-w-full gap-6 '>
-      
+        <Toaster richColors closeButton position="bottom-center"/>
         <Button type="submit" className="max-w-fit"
+        onClick={() => toast.success('Your blog has been published.')}
         // onClick={() => {toast({ description: "Your blog has been published.",})}} 
         >Publish
         </Button>

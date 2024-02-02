@@ -6,11 +6,10 @@ import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card"
 import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { RxPencil2 } from "react-icons/rx";
-// import { useToast } from '@/components/ui/use-toast'
+import { Toaster, toast } from 'sonner'
 
 
 const BlogCards = () => {
-    // const { toast } = useToast()
     const [blogData, setBlogData] = useState([]);
 
     const fetchBlog = async ()=>{
@@ -22,14 +21,17 @@ const BlogCards = () => {
         }
     }
     
-    const deleteBlog = async(Id)=>{
-      const response = await axios.delete('/api',{
-        params:{
-          mongoId:Id
-        }
-      })
-      
-      // ADD TOAST HERE
+    const deleteBlog = async(Id, event)=>{
+      event.preventDefault();
+      try {
+        const response = await axios.delete('/api',{
+          params:{
+            mongoId:Id
+          }
+        })
+      } catch (error) {
+        console.error(error);
+      }
       fetchBlog();
     }
 
@@ -65,11 +67,11 @@ const BlogCards = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuLabel>
+                        <Toaster richColors closeButton position="bottom-center" />
                         <Button variant="destructive" className="min-w-full" 
-                          onClick={()=>{deleteBlog(item._id);
-                            // toast({description: "Your blog has been Deleted.",}) 
+                          onClick={(event)=>{deleteBlog(item._id, event);
                             }}>
-                          <Link href='/saved'>Delete</Link>
+                          Delete
                         </Button>
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
