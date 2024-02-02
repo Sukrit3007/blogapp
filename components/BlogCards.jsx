@@ -13,9 +13,11 @@ const BlogCards = () => {
             console.error(error)
         }
     }
+    
     useEffect(()=>{
         fetchBlog();
     },[]);
+    
   return (
     <>
     {blogData.map((item)=>(

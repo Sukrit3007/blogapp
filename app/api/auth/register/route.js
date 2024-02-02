@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import express from "express";
 // import jwt from "jsonwebtoken";
 // import bcrypt from "bcrypt";
@@ -12,3 +13,5 @@
 
 //     return NextResponse.json({blogs:blogs})
 // }
+=======
+>>>>>>> parent of 7e3ec90 (publish new ui)
