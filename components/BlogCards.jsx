@@ -40,7 +40,7 @@ const BlogCards = () => {
   return (
     <>
     {blogData.map((item)=>(
-            <Card key={item} >
+            <Card key={item._id} >
 
             <CardHeader>
               <CardTitle >
