@@ -27,11 +27,10 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-
     const mongoId = await request.nextUrl.searchParams.get('mongoId')
-
     await BlogModel.findByIdAndDelete(mongoId);
-
     return NextResponse.json({msg:"post method hit"})
 }
+
+
 

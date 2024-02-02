@@ -1,15 +1,16 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import Link from 'next/link'
+import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card"
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
+import { Button } from './ui/button'
+import { RxPencil2 } from "react-icons/rx";
+import { UseToast } from '@/components/ui/use-toast'
 
 
 const BlogCards = () => {
+    const { toast } = UseToast()
     const [blogData, setBlogData] = useState([]);
 
     const fetchBlog = async ()=>{
@@ -21,6 +22,17 @@ const BlogCards = () => {
         }
     }
     
+    const deleteBlog = async(Id)=>{
+      const response = await axios.delete('/api',{
+        params:{
+          mongoId:Id
+        }
+      })
+      
+      // ADD TOAST HERE
+      fetchBlog();
+    }
+
     useEffect(()=>{
         fetchBlog();
     },[]);
@@ -28,13 +40,50 @@ const BlogCards = () => {
   return (
     <>
     {blogData.map((item)=>(
-            <Card key={item._id} >
+            <Card key={item} >
 
             <CardHeader>
-              <CardTitle>
-                <h1 className="flex flex-wrap scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-left">
-                  {item.title}
-                </h1>
+              <CardTitle >
+                <div className='container mx-auto flex items-center justify-between'>
+                  <h1 className="flex flex-wrap scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-left">
+                    {item.title}
+                  </h1>
+
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle cx="5" cy="12" r="2" fill="currentColor" />
+                        <circle cx="12" cy="12" r="2" fill="currentColor" />
+                        <circle cx="19" cy="12" r="2" fill="currentColor" />
+                      </svg>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>
+                        <Button variant="destructive" className="min-w-full" 
+                          onClick={()=>{deleteBlog(item._id);toast({
+                            description: "Your blog has been Deleted.",
+                            }) }}>
+                          <Link href='/saved'>Delete</Link>
+                        </Button>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <Button className="min-w-full">
+                          <RxPencil2  className="mr-2 h-4 w-4" /> 
+                          Edit
+                        </Button>
+                      </DropdownMenuItem>
+                      
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+
               </CardTitle>
             </CardHeader>
 
