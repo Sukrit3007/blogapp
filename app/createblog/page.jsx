@@ -1,3 +1,4 @@
+// createblog/page.jsx
 'use client'
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
@@ -7,8 +8,7 @@ import { Button } from "@/components/ui/button"
 
 import axios from 'axios'
 
-
-const page = () => {
+const CreateBlogPage = () => {
   // const { toast } = useToast()
 
   const [formData, setFormData] = useState({
@@ -68,4 +68,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CreateBlogPage
